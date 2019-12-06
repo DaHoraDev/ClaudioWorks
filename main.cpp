@@ -1,54 +1,65 @@
 #include <iostream>
+#include <clocale>
 
 using namespace std;
 
 int main() {
-
-    char v[100] = {'0','1','2','3','3','2','3','2','3','#'};
-
+    setlocale(LC_ALL, "Portuguese");
+    char v[100];
     int i = 0;
     int j = 0;
 
-    //Bloco para testar somente a posição 0 se é igual 1.
+    cout<<"Expressão regular => 1(23)*(01)* "<<endl;
+    cout<<"Digite uma cadeia: "; cin>>v;
+
+    for(int c = 0; c < 100; c++){
+        if(v[c] != ' '){
+            v[c] = '#';
+        }
+    }
+
+    //q0 -> q1
     if(v[i] == '1'){
         cout<<v[i]<<" ->aceito"<<endl;
     }else{
         cout<<v[i]<<" ->recusado"<<endl;
     }
 
-    //Bloco para testar o restante.
-    while(v[i] != '#') {
-        i++; // i = 1
-        j = i + 1; // j = 2
+    while(v[i] != '#'){
 
-        //caso 0 ou 2.
-        if (v[i] == '2' || v[i] == '0') {
+        i++;
+        j = i+1;
 
-            //caso 2.
-            if (v[i] == '2') {
-                cout << v[i] << " ->aceito"<<endl;
+        //caso q1 -> q2
+        do{
 
-                if(v[j] == '3'){
-                    cout << v[j] << " ->aceito"<<endl;
-                }else{
-                    cout << v[j] << " ->recusado"<<endl;
+            if (v[i] == '2'){
+                cout << v[i] << " ->aceito" << endl;
+
+                if (v[j] == '3') {
+                    cout << v[j] << " ->aceito" << endl;
+                } else {
+                    cout << v[j] << " ->recusado" << endl;
                 }
-
             }
 
-            //caso 0.
+        }while(v[i] == '2' || v[j] == '3');
+
+        //Caso q1 -> q3
+        do {
+
             if (v[i] == '0') {
-                cout << v[i] << " ->aceito"<<endl;
-
-                if(v[j] == '1'){
-                    cout << v[j] << " ->aceito"<<endl;
-                }else{
-                    cout << v[j] << " ->recusado"<<endl;
+                cout << v[i] << " ->aceito" << endl;
+                if (v[j] == '1') {
+                    cout << v[j] << " ->aceito" << endl;
+                } else {
+                    cout << v[j] << " ->recusado" << endl;
                 }
-
             }
-        }
+
+        }while(v[i] == '0' || v[j] == '1');
     }
 
     return 0;
 }
+
