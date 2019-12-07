@@ -85,7 +85,7 @@ int main() {
         }
 
         /*Se para q1 -> q2 for diferente de 2 e q1 -> q3 for diferente de 0*/
-        if(cadeia[i] != '2' && cadeia[i] != '0'){
+        if(cadeia[i] != '2' && cadeia[i] != '0' && cadeia[i] != NULL){
             cout<<vermelho<<cadeia[i]<<clean<<" ";
             teste = false;
         }
