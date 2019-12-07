@@ -10,7 +10,8 @@ using std::endl;
 using std::string;
 
 int main() {
-
+    /*Apresentação da expressão do grupo ai usuário*/
+    cout<<"Expressão regular => 1(23)*(01)* "<<endl;
     /*Variável que armazenará a cadeia digitada pelo usuário*/
     string cadeia;
     cout<<"Digite uma cadeia: ";
