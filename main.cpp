@@ -28,7 +28,7 @@ int main() {
     }
     i++;
     if(tam > 2){
-        while(cadeia[i] !=  || teste){
+        while(cadeia[i] != NULL || teste){
             j = i + 1;
 
             if(cadeia[i] == '2'){
