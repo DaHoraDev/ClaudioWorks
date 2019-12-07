@@ -12,6 +12,7 @@ using std::string;
 int main() {
     /*Apresentação da expressão do grupo ao usuário*/
     cout<<"Expressão regular => 1(23)*(01)* "<<endl;
+
     /*Variável que armazenará a cadeia digitada pelo usuário*/
     string cadeia;
     cout<<"Digite uma cadeia: ";
@@ -26,7 +27,7 @@ int main() {
     int i=0;
     int j=0;
 
-    /*Se q0 -> q1 é igual a 1*/
+    /*q0 -> q1*/
     if(cadeia[0] == '1'){
         cout<<verde<<cadeia[i]<<clean<<" ";
     }else{
@@ -42,52 +43,43 @@ int main() {
         /*pula para a posição 1 do vetor*/
         i++;
 
-        /*Se q1 -> q2, então v[i] = 2*/
-        if(cadeia[i] == '2'){
+        /*Se v[i] = 2, então q1 -> q2*/
+        while(cadeia[i] == '2'){
 
             cout<<verde<<cadeia[i]<<clean<<" ";
 
-            while(cadeia[i] == '2'){
+            j = i + 1;
 
-                j = i + 1;
-
-                if(cadeia[j] == '3'){
-                    cout<<verde<<cadeia[j]<<clean<<" ";
-                }else{
-                    cout<<vermelho<<cadeia[j]<<clean<<" ";
-                    teste = false;
-                }
-
-                i+=2;
-
+            /*q2 -> q4*/
+            if(cadeia[j] == '3'){
+                cout<<verde<<cadeia[j]<<clean<<" ";
+            }else{
+                cout<<vermelho<<cadeia[j]<<clean<<" ";
+                teste = false;
             }
-
+            i+=2;
         }
 
-        /*Se q1 -> q3, então v[i] = 0*/
-        if(cadeia[i] == '0'){
+        /*Se v[i] = 0, então q1 -> q3*/
+        while(cadeia[i] == '0'){
 
             cout<<verde<<cadeia[i]<<clean<<" ";
 
-            while(cadeia[i] == '0'){
+            j = i + 1;
+            
+            /*q3 -> q5*/
+            if(cadeia[j] == '1'){
+                cout<<verde<<cadeia[j]<<clean<<" ";
+            }else{
+                cout<<vermelho<<cadeia[j]<<clean<<" ";
+                teste=false;
+            }
 
-                j = i + 1;
+            i+=2;
 
-                if(cadeia[j] == '1'){
-                    cout<<verde<<cadeia[j]<<clean<<" ";
-                }else{
-                    cout<<vermelho<<cadeia[j]<<clean<<" ";
-                    teste=false;
-                }
-
-                i+=2;
-
-                if(cadeia[i] == '2'){
-                    cout<<vermelho<<cadeia[i]<<clean<<" ";
-                    teste = false;
-                    break;
-                }
-
+            if(cadeia[i] == '2'){
+                cout<<vermelho<<cadeia[i]<<clean<<" ";
+                teste = false;
             }
 
         }
